@@ -47,8 +47,17 @@ class ProfilePage extends React.Component{
                             content="Email"
                             placeHolder="bahadir.com"
                             />
+
+                            <CustomInput
+                            content="Phone"
+                            placeHolder="00541234865"
+                            />
                             
                         </Col>
+                    </Row>
+
+                    <Row>
+                        
                     </Row>
                 </Container>
                 
