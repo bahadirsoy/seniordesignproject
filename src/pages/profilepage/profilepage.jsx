@@ -38,14 +38,16 @@ class ProfilePage extends React.Component{
 
                         <Col sm={12} lg={6}>
 
-                            <InputGroup className="mb-3">
-                                <InputGroup.Text id="basic-addon1">Name</InputGroup.Text>
-                                <FormControl
-                                placeholder="Bahadir"
-                                aria-label="Username"
-                                aria-describedby="basic-addon1"
-                                />
-                            </InputGroup>
+                            <CustomInput
+                            content="Name"
+                            placeHolder="Bahadir"
+                            /> 
+
+                            <CustomInput
+                            content="Email"
+                            placeHolder="bahadir.com"
+                            />
+                            
                         </Col>
                     </Row>
                 </Container>
