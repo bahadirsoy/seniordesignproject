@@ -6,6 +6,9 @@ import './profilepage.styles.css';
 //import react strap components
 import { Card, Button, Container, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
 
+//import pages and components
+import CustomInput from '../../components/custominput/custominput.component';
+
 class ProfilePage extends React.Component{
     constructor() {
         super();
@@ -26,7 +29,7 @@ class ProfilePage extends React.Component{
                                 <Card.Body>
                                     <Card.Title>Bahadır Ustabaşı</Card.Title>
                                     <Card.Text>
-                                        Merhaba ben bahadır şöyle böyle bir insaım bu da açıklamam Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis, qui?
+                                        Merhaba ben bahadır şöyle böyle bir insanım bu da açıklamam Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis, qui?
                                     </Card.Text>
                                     <Button variant="primary">Contact Bahadır</Button>
                                 </Card.Body>
@@ -34,6 +37,7 @@ class ProfilePage extends React.Component{
                         </Col>
 
                         <Col sm={12} lg={6}>
+
                             <InputGroup className="mb-3">
                                 <InputGroup.Text id="basic-addon1">Name</InputGroup.Text>
                                 <FormControl
