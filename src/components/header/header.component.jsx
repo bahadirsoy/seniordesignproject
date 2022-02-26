@@ -27,10 +27,12 @@ class HeaderComponent extends React.Component{
                 </a>
                 <a >Nav link</a>
 
-                <Link to="/h" className='float-right' > <FontAwesomeIcon color='white' size="lg" icon={faRightFromBracket} /> </Link>
+                <a className='float-right' > <FontAwesomeIcon color='white' size="lg" icon={faRightFromBracket} /> </a>
                 <a className='float-right' > <FontAwesomeIcon color='white' size="lg" icon={faRightToBracket} /> </a>
                 <a className='float-right' > <FontAwesomeIcon color='white' size="lg" icon={faGear} /> </a>
                 <Link to="/profile" className='float-right' > <FontAwesomeIcon color='white' size="lg" icon={faUser} /> </Link>
+                <Link to="/signIn" className='float-right' > SignIn </Link>
+                <Link to="/signUp" className='float-right' > SignUp </Link>
 
                 <a className="icon" onClick={() => {
                     //Open links with clicking icon
