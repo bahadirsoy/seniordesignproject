@@ -32,9 +32,15 @@ class App extends React.Component {
   render(){
     return (
       <div>
+
+        <HeaderComponent />
+
+        <Routes>
+          
+          <Route path='/' element={<HomePage/>}/>
+
+        </Routes>
         
-        <HeaderComponent></HeaderComponent>
-        <HomePage></HomePage>     
 
       </div>
     );
