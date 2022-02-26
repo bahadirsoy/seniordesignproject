@@ -1,4 +1,5 @@
 
+//import main components
 import './App.css';
 import React from 'react';
 
@@ -9,11 +10,21 @@ import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBars, faGear, faHouse, faRightFromBracket, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
+//import react router components
+import {
+  BrowserRouter as Router,
+  Routes,                   // Switch = Routes
+  Route, 
+  Link
+} from 'react-router-dom'
+
 class App extends React.Component {
 
+  //constructor
   constructor(){
     super();
 
+    //initiate state variables
     this.state = {
       navbarClass: "topnav",
     }
@@ -37,6 +48,7 @@ class App extends React.Component {
           <a className='float-right' > <FontAwesomeIcon color='white' size="lg" icon={faUser} /> </a>
 
           <a className="icon" onClick={() => {
+            //Open links with clicking icon
             if (this.state.navbarClass === "topnav") {
               this.setState({navbarClass: "topnav responsive"})
             } else {
@@ -46,6 +58,7 @@ class App extends React.Component {
             <FontAwesomeIcon icon={faBars} />
           </a>
         </div>
+  
   
         <Container>
           <Row>
