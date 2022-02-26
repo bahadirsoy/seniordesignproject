@@ -15,6 +15,7 @@ import {
 import HomePage from './pages/homepage/homepage';
 import HeaderComponent from './components/header/header.component';
 import ProfilePage from './pages/profilepage/profilepage';
+import SignInPage from './pages/signinpage/signinpage';
 
 
 class App extends React.Component {
@@ -40,6 +41,7 @@ class App extends React.Component {
           
           <Route path='/' element={<HomePage/>}/>
           <Route path='/profile' element={<ProfilePage/>}/>
+          <Route path='/signin' element={<SignInPage/>}/>
 
         </Routes>
         
