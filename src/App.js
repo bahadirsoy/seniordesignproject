@@ -18,6 +18,9 @@ import {
   Link
 } from 'react-router-dom'
 
+//import pages
+import HomePage from './pages/homepage/homepage';
+
 class App extends React.Component {
 
   //constructor
@@ -58,7 +61,6 @@ class App extends React.Component {
             <FontAwesomeIcon icon={faBars} />
           </a>
         </div>
-  
   
         <Container>
           <Row>
