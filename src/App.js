@@ -27,7 +27,6 @@ class App extends React.Component {
 
     //initiate state variables
     this.state = {
-      navbarClass: "topnav",
       currentUser: null
     }
   }
@@ -39,7 +38,7 @@ class App extends React.Component {
       this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
           this.setState({ currentUser: user })
 
-          console.log(user);
+          //console.log(user);
       });
   }
 
@@ -52,7 +51,9 @@ class App extends React.Component {
     return (
       <div>
 
-        <HeaderComponent />
+        <HeaderComponent
+          currentUser={this.state.currentUser}
+        />
 
         <Routes>
           
