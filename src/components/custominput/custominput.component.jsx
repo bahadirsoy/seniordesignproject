@@ -17,6 +17,7 @@ const CustomInput = (props) => (
                     name={props.name}
                     type={props.type}
                     onChange={props.handleChange}
+                    autoComplete="on"
                 />
         </InputGroup>
     </div>

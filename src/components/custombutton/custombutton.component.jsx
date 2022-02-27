@@ -15,3 +15,5 @@ const CustomButton = (props) => {
         size={props.size}
     ></Button>
 }
+
+export default CustomButton;

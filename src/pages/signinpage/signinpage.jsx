@@ -3,6 +3,8 @@
 import React from 'react';
 import './signinpage.styles.css';
 import { Link } from 'react-router-dom';
+import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { auth } from '../../firebase/firebase.utils';
 
 //import react strap components
 import { FormLabel } from 'react-bootstrap';
@@ -21,8 +23,17 @@ class SignInPage extends React.Component{
 
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            currentUser: null
         };
+    }
+    
+    componentDidMount(){
+        auth.onAuthStateChanged(user => {
+            this.setState({ currentUser: user })
+
+            console.log(user);
+        });
     }
 
     //handle submit
@@ -37,7 +48,7 @@ class SignInPage extends React.Component{
         const {value} = e.target;
         const {name} = e.target;
         
-        this.setState({ [name]: value }, () => console.log(this.state.email))
+        this.setState({ [name]: value }, () => console.log(this.state.email + " " + this.state.password))
     }
 
     render(){
@@ -51,7 +62,7 @@ class SignInPage extends React.Component{
                     </div>
                     <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
 
-                        <form>
+                        <form onSubmit={this.handleSubmit}>
                             <div className="form-outline">
                                 <CustomInput
                                     className="form-control form-control-lg"
@@ -88,9 +99,12 @@ class SignInPage extends React.Component{
                                 <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
                             </div>
 
-                            <Link to="/" className="btn btn-primary btn-lg btn-block">
+                            <button 
+                                className="btn btn-primary btn-lg btn-block"
+                                onClick={signInWithGoogle}
+                            >
                                 <FontAwesomeIcon icon={faG} /> Continue with Google
-                            </Link>
+                            </button>
                         </form>
                     </div>
                     </div>
