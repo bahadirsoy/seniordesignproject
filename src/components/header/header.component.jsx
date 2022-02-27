@@ -28,7 +28,7 @@ class HeaderComponent extends React.Component{
                 </a>
                 {
                     this.props.currentUser ?
-                    console.log(this.props.currentUser)
+                    <a>welcome</a>
                     :
                     <a>nav link</a>
                 }

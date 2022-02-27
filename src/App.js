@@ -2,7 +2,7 @@
 //import main components
 import './App.css';
 import React from 'react';
-import { auth } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 //import react router components
 import {
@@ -35,10 +35,8 @@ class App extends React.Component {
     
   componentDidMount(){
       //assign current user everytime component did mount
-      this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-          this.setState({ currentUser: user })
-
-          //console.log(user);
+      this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+          createUserProfileDocument(user);
       });
   }
 
