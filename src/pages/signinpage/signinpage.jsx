@@ -4,7 +4,6 @@ import React from 'react';
 import './signinpage.styles.css';
 import { Link } from 'react-router-dom';
 import { signInWithGoogle } from '../../firebase/firebase.utils';
-import { auth } from '../../firebase/firebase.utils';
 
 //import react strap components
 import { FormLabel } from 'react-bootstrap';
@@ -24,20 +23,12 @@ class SignInPage extends React.Component{
         this.state = {
             email: '',
             password: '',
-            currentUser: null
         };
-    }
-    
-    componentDidMount(){
-        auth.onAuthStateChanged(user => {
-            this.setState({ currentUser: user })
-
-            console.log(user);
-        });
     }
 
     //handle submit
     handleSubmit = e => {
+        //when user sign ins reset inputs
         e.preventDefault();
 
         this.setState({email: '', password: ''})
@@ -45,6 +36,7 @@ class SignInPage extends React.Component{
 
     //handle change in inputs
     handleChange = e => {
+        //update state variables everytime user types
         const {value} = e.target;
         const {name} = e.target;
         

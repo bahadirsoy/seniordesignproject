@@ -2,6 +2,7 @@
 //import main components
 import './App.css';
 import React from 'react';
+import { auth } from './firebase/firebase.utils';
 
 //import react router components
 import {
@@ -27,9 +28,25 @@ class App extends React.Component {
     //initiate state variables
     this.state = {
       navbarClass: "topnav",
+      currentUser: null
     }
   }
 
+  unsubscribeFromAuth = null;
+    
+  componentDidMount(){
+      //assign current user everytime component did mount
+      this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+          this.setState({ currentUser: user })
+
+          console.log(user);
+      });
+  }
+
+  //unsubscribe from auth when app is closed
+  componentWillUnmount(){
+      this.unsubscribeFromAuth();
+  }
 
   render(){
     return (
