@@ -14,6 +14,9 @@ const CustomInput = (props) => (
                     placeholder={props.placeHolder}
                     aria-label="Username"
                     aria-describedby="basic-addon1"
+                    name={props.name}
+                    type={props.type}
+                    onChange={props.handleChange}
                 />
         </InputGroup>
     </div>
