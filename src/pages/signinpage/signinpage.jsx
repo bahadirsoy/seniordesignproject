@@ -3,7 +3,7 @@
 import React from 'react';
 import './signinpage.styles.css';
 import { Link } from 'react-router-dom';
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
 //import react strap components
 import { FormLabel } from 'react-bootstrap';
@@ -27,11 +27,18 @@ class SignInPage extends React.Component{
     }
 
     //handle submit
-    handleSubmit = e => {
+    handleSubmit = async e => {
         //when user sign ins reset inputs
         e.preventDefault();
 
-        this.setState({email: '', password: ''})
+        const { email, password } = this.state;
+
+        try{
+            await auth.signInWithEmailAndPassword(email, password);
+            this.setState({ email: '', password: '' })
+        } catch(error){
+            console.log(error);
+        }
     }
 
     //handle change in inputs

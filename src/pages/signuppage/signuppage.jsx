@@ -35,8 +35,8 @@ class SignUpPage extends React.Component{
 
         //destructure state variables
         const { displayName, email, password, confirmpassword } = this.state;
-
-        if(password != confirmpassword){
+        
+        if(password !== confirmpassword){
             alert("Password and confirm password are not same");
             return;
         }
@@ -128,7 +128,7 @@ class SignUpPage extends React.Component{
                                     id="confirmpassword"
                                     content="Confirm Password"
                                     placeHolder="password again"
-                                    name='password'
+                                    name='confirmpassword'
                                     type='password'
                                     value={this.state.confirmpassword}
                                     handleChange={this.handleChange}
