@@ -15,8 +15,11 @@ const firebaseConfig = {
 };
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
+    //if user is not logged in return
     if(!userAuth) return;
 
+    //if there is user logged in get snaphot check if there exist such a user in database, if there is
+    //return it, if not create a new user in db with userRef.set
     const userRef = firestore.doc(`users/${userAuth.uid}`)
     const snapShot = await userRef.get();
 

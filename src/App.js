@@ -28,7 +28,9 @@ class App extends React.Component {
 
     //initiate state variables
     this.state = {
+      //store current user
       currentUser: null,
+      //do not load the page before auth state is changed
       loading: true
     }
   }
@@ -38,6 +40,7 @@ class App extends React.Component {
   componentDidMount(){
       //assign current user everytime component did mount
       this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+          //if there is usere logged in
           if(userAuth){
             const userRef = await createUserProfileDocument(userAuth);
 
@@ -53,6 +56,7 @@ class App extends React.Component {
             });
             
           }
+          //if there is no user logged in, assing currentUser null
           else{
             this.setState({ 
               currentUser: userAuth,
