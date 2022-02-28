@@ -19,9 +19,6 @@ class ProfilePage extends React.Component{
         }
     }
 
-    componentDidMount(){
-        console.log(this.props.currentUser);
-    }
 
     render(){
         //destructure currentUser variables
@@ -57,7 +54,7 @@ class ProfilePage extends React.Component{
 
                             <CustomInput
                             content="Account date"
-                            placeHolder={createdAt}
+                            placeHolder={createdAt.toDate()}
                             />
                             
                         </Col>
