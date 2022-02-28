@@ -3,14 +3,14 @@
 import React from 'react';
 import './signuppage.styles.css';
 import { Link } from 'react-router-dom';
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { auth, createUserProfileDocument, signInWithGoogle } from '../../firebase/firebase.utils';
 
 //import react strap components
 import { FormLabel } from 'react-bootstrap';
 
 //import FontAwesome Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faG } from '@fortawesome/free-solid-svg-icons';
+import { faG, faSortAmountUpAlt } from '@fortawesome/free-solid-svg-icons';
 
 //import local components
 import CustomInput from '../../components/custominput/custominput.component';
@@ -21,17 +21,40 @@ class SignUpPage extends React.Component{
         super();
 
         this.state = {
+            displayName: '',
             email: '',
             password: '',
+            confirmpassword: ''
         };
     }
 
     //handle submit
-    handleSubmit = e => {
+    handleSubmit = async e => {
         //when user sign ins reset inputs
         e.preventDefault();
 
-        this.setState({email: '', password: ''})
+        //destructure state variables
+        const { displayName, email, password, confirmpassword } = this.state;
+
+        if(password != confirmpassword){
+            alert("Password and confirm password are not same");
+            return;
+        }
+
+        try{
+            const { user } = await auth.createUserWithEmailAndPassword(email, password);
+
+            await createUserProfileDocument(user, { displayName })
+            this.setState({
+                displayName: '',
+                email: '',
+                password: '',
+                confirmpassword: ''
+            })
+        } catch(error){
+
+        }
+
     }
 
     //handle change in inputs
@@ -58,7 +81,22 @@ class SignUpPage extends React.Component{
                             <div className="form-outline">
                                 <CustomInput
                                     className="form-control form-control-lg"
-                                    id="form1Example13"
+                                    id="displayName"
+                                    content="Display name"
+                                    placeHolder="Display name"
+                                    name='displayName'
+                                    type='text'
+                                    value={this.state.displayName}
+                                    handleChange={this.handleChange}
+                                    required
+                                ></CustomInput>
+                                <FormLabel className="form-label" htmlFor="displayName"></FormLabel>
+                            </div>
+
+                            <div className="form-outline">
+                                <CustomInput
+                                    className="form-control form-control-lg"
+                                    id="email"
                                     content="Email"
                                     placeHolder="email"
                                     name='email'
@@ -67,14 +105,13 @@ class SignUpPage extends React.Component{
                                     handleChange={this.handleChange}
                                     required
                                 ></CustomInput>
-                                <FormLabel className="form-label" htmlFor="form1Example13"></FormLabel>
+                                <FormLabel className="form-label" htmlFor="email"></FormLabel>
                             </div>
-
                             
                             <div className="form-outline">
                                 <CustomInput
                                     className="form-control form-control-lg"
-                                    id="form1Example23"
+                                    id="password"
                                     content="Password"
                                     placeHolder="password"
                                     name='password'
@@ -82,7 +119,21 @@ class SignUpPage extends React.Component{
                                     value={this.state.password}
                                     handleChange={this.handleChange}
                                 ></CustomInput>
-                                <FormLabel className="form-label" htmlFor="form1Example23"></FormLabel>
+                                <FormLabel className="form-label" htmlFor="password"></FormLabel>
+                            </div>
+
+                            <div className="form-outline">
+                                <CustomInput
+                                    className="form-control form-control-lg"
+                                    id="confirmpassword"
+                                    content="Confirm Password"
+                                    placeHolder="password again"
+                                    name='password'
+                                    type='password'
+                                    value={this.state.confirmpassword}
+                                    handleChange={this.handleChange}
+                                ></CustomInput>
+                                <FormLabel className="form-label" htmlFor="confirmpassword"></FormLabel>
                             </div>
                             
                             <button type="submit" className="btn btn-primary btn-lg btn-block">Sign up</button>
