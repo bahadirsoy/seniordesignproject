@@ -34,17 +34,22 @@ class HeaderComponent extends React.Component{
                 }
 
                 <a className='float-right' > <FontAwesomeIcon color='white' size="lg" icon={faGear} /> </a>
-                <Link to="/profile" className='float-right' > <FontAwesomeIcon color='white' size="lg" icon={faUser} /> </Link>
                 {
                     this.props.currentUser ?
-                    <a 
-                    className='float-right' 
-                    onClick={() => auth.signOut()}
-                    >
-                        <FontAwesomeIcon color='white' size="lg" icon={faRightToBracket} />
-                    </a>
+                    <div>
+                        <a 
+                        className='float-right' 
+                        onClick={() => auth.signOut()}
+                        >
+                            <FontAwesomeIcon color='white' size="lg" icon={faRightToBracket} />
+                        </a>
+                        <Link to="/profile" className='float-right' > <FontAwesomeIcon color='white' size="lg" icon={faUser} /> </Link>
+                    </div>
                     :
-                    <Link to="/signin" className='float-right' > SignIn </Link>
+                    <div>
+                        <Link to="/signin" className='float-right' > SignIn </Link>
+                        <Link to="/signup" className='float-right' > SignUp </Link>
+                    </div>
                 }
 
                 <a className="icon" onClick={() => {

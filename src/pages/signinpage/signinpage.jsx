@@ -40,7 +40,7 @@ class SignInPage extends React.Component{
         const {value} = e.target;
         const {name} = e.target;
         
-        this.setState({ [name]: value }, () => console.log(this.state.email + " " + this.state.password))
+        this.setState({ [name]: value })
     }
 
     render(){
