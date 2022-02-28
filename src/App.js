@@ -28,7 +28,8 @@ class App extends React.Component {
 
     //initiate state variables
     this.state = {
-      currentUser: null
+      currentUser: null,
+      loading: true
     }
   }
 
@@ -45,7 +46,8 @@ class App extends React.Component {
                 currentUser: {
                   id: snapShot.id,
                   ...snapShot.data()
-                }
+                },
+                loading: false
               })
               console.log(this.state);
             });
@@ -63,6 +65,9 @@ class App extends React.Component {
   }
 
   render(){
+    if(this.state.loading){
+      return <div> Loading ... </div>;
+    }
     return (
       <div>
 
@@ -73,7 +78,9 @@ class App extends React.Component {
         <Routes>
           
           <Route path='/' element={<HomePage/>}/>
-          <Route path='/profile' element={<ProfilePage/>}/>
+          <Route path='/profile' element={<ProfilePage
+            currentUser={this.state.currentUser}
+          />} />
           <Route path='/signin' element={<SignInPage/>}/>
           <Route path='/signup' element={<SignUpPage/>}/>
 

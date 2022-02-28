@@ -2,6 +2,7 @@
 //import main components
 import React from 'react';
 import './profilepage.styles.css';
+import { firestore } from '../../firebase/firebase.utils';
 
 //import react strap components
 import { Card, Button, Container, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
@@ -16,6 +17,10 @@ class ProfilePage extends React.Component{
         this.state = {
 
         }
+    }
+
+    componentDidMount(){
+        console.log(this.props.currentUser);
     }
 
     render(){
