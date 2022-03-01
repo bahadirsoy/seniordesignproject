@@ -23,9 +23,9 @@ class HeaderComponent extends React.Component{
             <div className={this.state.navbarClass} id="myTopnav">
                 <a className="active">FBprogram</a>
 
-                <a >
+                <Link to="/homepage" >
                     <FontAwesomeIcon color='white' size="lg" icon={faHouse} />
-                </a>
+                </Link>
                 {
                     this.props.currentUser ?
                     <a>welcome</a>

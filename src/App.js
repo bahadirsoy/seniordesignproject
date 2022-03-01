@@ -84,7 +84,7 @@ class App extends React.Component {
 
         <Routes>
           
-          <Route path='/' element={<HomePage/>}/>
+          <Route path='/homepage' element={<HomePage/>}/>
           <Route path='/profile' element={<ProfilePage
             currentUser={this.state.currentUser}
           />} />
