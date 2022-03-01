@@ -15,7 +15,8 @@ class HomePage extends React.Component{
         super();
 
         this.state = {
-            posts: []
+            posts: [],
+            postIds: []
         }
     }
 
@@ -23,14 +24,17 @@ class HomePage extends React.Component{
         const q = query(collection(firestore, "posts"), where("displayName", "==", "furkan"));
 
         const posts = [];
+        const postIds = [];
+
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
-
+            
             posts.push(doc.data());
+            postIds.push(doc.id)
 
         });
         
-        this.setState({ posts: posts }, () => console.log(this.state.posts))
+        this.setState({ posts: posts })
 
     }
 
@@ -38,8 +42,17 @@ class HomePage extends React.Component{
         return(
             <div>
                 <SharePostPanel />
-                <Post />
-                <Post />
+                
+                {
+                    this.state.posts.map(post => (
+                        <Post 
+                            key={post.postTitle}
+                            postTitle={post.postTitle}
+                            postContent={post.postContent}
+                            displayName={post.displayName}
+                        />
+                    ))
+                }
             </div>
         )
     }
